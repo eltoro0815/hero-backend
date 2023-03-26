@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Hero;
@@ -19,5 +21,10 @@ class HeroSeeder extends Seeder
         Hero::factory()
             ->count(50)
             ->create();
+
+
+        // DB::table('heroes')->insert([
+        //     'name' => Str::random(10)
+        // ]);
     }
 }
