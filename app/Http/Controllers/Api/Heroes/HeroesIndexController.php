@@ -21,8 +21,8 @@ final class HeroesIndexController extends Controller
             Response::HTTP_NOT_FOUND
         );
 
-        $posts = Hero::query()->paginate();
+        $heroes = Hero::query()->paginate();
 
-        return HeroResource::collection($posts);
+        return HeroResource::collection($heroes);
     }
 }

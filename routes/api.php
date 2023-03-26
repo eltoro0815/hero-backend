@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\Hero\{HeroesDestroyController, HeroesIndexController, HeroesShowController, HeroesStoreController, HeroesUpdateController};
 use App\Http\Controllers\Api\Posts\{PostsDestroyController, PostsIndexController, PostsShowController, PostsStoreController, PostsUpdateController};
 use App\Http\Controllers\Api\Users\{UsersDestroyController, UsersIndexController, UsersShowController, UsersUpdateController};
 use Illuminate\Support\Facades\Route;
@@ -31,5 +32,13 @@ Route::middleware(['auth:sanctum', 'cache.headers:public;max_age=60;etag', 'treb
         Route::get('/{post}', PostsShowController::class)->name('posts.show');
         Route::match(['put', 'patch'], '/{post}', PostsUpdateController::class)->name('posts.update');
         Route::delete('/{post}', PostsDestroyController::class)->name('posts.destroy');
+    });
+
+    Route::prefix('heroes')->group(function () {
+        Route::get('/', HeroesIndexController::class)->name('heroes.index');
+        Route::post('/', HeroesStoreController::class)->name('heroes.store');
+        Route::get('/{hero}', HeroesShowController::class)->name('heroes.show');
+        Route::match(['put', 'patch'], '/{hero}', HeroesUpdateController::class)->name('heroes.update');
+        Route::delete('/{hero}', HeroesDestroyController::class)->name('heroes.destroy');
     });
 });
