@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class {{ class }} extends Controller
 {
-    public function __invoke(Request $request, Version $version, {{ model }} ${{ modelVariable }}): JsonResource
+    public function __invoke(Request $request, Version $version, {{ model }} ${{ modelVariable }}): JsonResponse
     {
 //        abort_unless(
 //            $version->greaterThanOrEqualsTo(Version::v1_0),
